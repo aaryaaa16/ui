@@ -26,66 +26,68 @@ class _ToggleViewState extends State<ToggleView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(35),
-          child: Column(
-            children: [
-              Text(
-                'Cake.Shop',
-                style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.grey[900]
-                ),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: toggle,
-                    child: Text(
-                      'SignIn',
-                      style: showSignIn ? TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 40.0,
-                          color: Colors.deepPurple
-                      ) : TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 40.0,
-                          color: Colors.grey
-                      ),
-                    )
+        child: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.all(35),
+            child: Column(
+              children: [
+                Text(
+                  'Cake.Shop',
+                  style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.grey[900]
                   ),
-                  GestureDetector(
-                    onTap: toggle,
-                    child: Container(
-                      padding: EdgeInsets.symmetric(vertical: 8.0),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: toggle,
                       child: Text(
-                        'SignUp',
+                        'SignIn',
                         style: showSignIn ? TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 40.0,
-                            color: Colors.grey
+                            color: Colors.deepPurple
                         ) : TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 40.0,
-                            color: Colors.deepPurple
+                            color: Colors.grey
+                        ),
+                      )
+                    ),
+                    GestureDetector(
+                      onTap: toggle,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 8.0),
+                        child: Text(
+                          'SignUp',
+                          style: showSignIn ? TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 40.0,
+                              color: Colors.grey
+                          ) : TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 40.0,
+                              color: Colors.deepPurple
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Container(
-                padding: EdgeInsets.all(8.0),
-                child: showSignIn ? SignIn() : SignUp(),
-              )
-            ],
+                  ],
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Container(
+                  padding: EdgeInsets.all(8.0),
+                  child: showSignIn ? SignIn() : SignUp(),
+                )
+              ],
+            ),
           ),
         ),
       ),
