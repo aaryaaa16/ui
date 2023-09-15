@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "102457391948",
+    "project_id": "contact-form-45c00",
+    "storage_bucket": "contact-form-45c00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102457391948:android:ed6b813ffa050628eaade9",
+        "android_client_info": {
+          "package_name": "com.example.contact"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCh-ii_tPe83glfcKkqKBz_V2QckaENpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
