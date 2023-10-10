@@ -16,6 +16,8 @@ class _PaymentDetailsState extends State<PaymentDetails> {
   final TextEditingController _cvvController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
+  final DateTime currentDate = DateTime.now();
+  bool _dateError = false;
 
   @override
   void dispose() {
@@ -52,8 +54,20 @@ class _PaymentDetailsState extends State<PaymentDetails> {
               Flexible(
                 child: TextFieldInput(
                   textEditingController: _dateController,
-                  hintText: 'Expiry (MM/YY)',
+                  hintText: 'Expiry (MM/YYYY)',
                   textInputType: TextInputType.text,
+                  onChanged: (value) {
+                    if (!isCardExpiryValid(value)) {
+                      setState(() {
+                        _dateError = true;
+                      });
+                    } else {
+                      setState(() {
+                        _dateError = false;
+                      });
+                    }
+                  },
+                  error: _dateError,
                 ),
               ),
               const SizedBox(width: 10.0),
@@ -143,5 +157,28 @@ class _PaymentDetailsState extends State<PaymentDetails> {
         ],
       ),
     );
+  }
+
+  bool isCardExpiryValid(String input) {
+    try {
+      // Split the input into month and year
+      final parts = input.split('/');
+      if (parts.length != 2) {
+        return false;
+      }
+
+      final month = int.parse(parts[0]);
+      final year = int.parse(parts[1]);
+
+      if (month < 1 || month > 12) {
+        return false;
+      }
+
+      final cardExpiryDate = DateTime(year, month);
+
+      return cardExpiryDate.isAfter(currentDate) || cardExpiryDate.isAtSameMomentAs(currentDate);
+    } catch (e) {
+      return false;
+    }
   }
 }
